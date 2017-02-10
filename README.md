@@ -5,7 +5,7 @@ Support for setting up an environment for using Arduino with makefiles while usi
 ## Used projects
 
 + [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile)
-+ [arduino-rp6-library]("https://github.com/b3nzchr3ur/arduino-rp6-library")
++ [arduino-rp6-library](https://github.com/b3nzchr3ur/arduino-rp6-library)
 + [Cutecom](http://cutecom.sourceforge.net/): graphical application for serial port communication
 
 ## Tested systems
