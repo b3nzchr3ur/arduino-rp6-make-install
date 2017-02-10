@@ -28,9 +28,9 @@ Check out the [examples](examples) directory for some example projects.
 Building one of the example projects:
 
 + Open a terminal
-+ Navigate to the project directory (f.i. [examples/rp6-master](examples/rp6-master)).
++ Navigate to the project directory (f.i. [examples/rp6-master](examples/rp6-master))
 + Build the project with terminal command: `make`
-+ Check if the com-port definition of your Arduino in the Makefile (f.i [examples/rp6-master/Makefile](examples/rp6-master/Makefile)
++ Check if the com-port definition of your Arduino in the Makefile (f.i [examples/rp6-master/Makefile](examples/rp6-master/Makefile))
 + Upload the project to your Arduino board: `make upload`
 
 More information available on: [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile). 
