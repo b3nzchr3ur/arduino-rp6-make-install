@@ -33,7 +33,12 @@ fi
 
 cd $GIT_REPO_DIR
 
+
 export GIT_CODE_URL="https://github.com/sudar/Arduino-Makefile.git" 
+reportStep "Retrieving source code for Arduino-Makefile:" $GIT_CODE_URL
+git clone $GIT_CODE_URL
+
+export GIT_CODE_URL="https://github.com/b3nzchr3ur/arduino-rp6-make-install" 
 reportStep "Retrieving source code for Arduino-Makefile:" $GIT_CODE_URL
 git clone $GIT_CODE_URL
 
@@ -55,4 +60,10 @@ fi
 
 cd $HOME
 
+reportStep "Creating link to Arduino-Rp6 example project: "
+ln -s $GIT_REPO_DIR/arduino-rp6-make-install/examples/rp6-master arduino-rp6-example
+
 reportStep "Installation done... enjoy!" 
+
+reportStep "You can find the Arduino-RP6 example project in:" $HOME/arduino-rp6-example
+
