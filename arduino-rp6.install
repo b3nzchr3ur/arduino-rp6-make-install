@@ -1,0 +1,58 @@
+#!/bin/bash
+#-------------------------------------------------------------
+#
+# Script for installing Arduino-Makefile environment for RP6
+#-------------------------------------------------------------
+
+function reportStep {
+	local message="$@"
+        local line="---------------------------------------------------------------------"
+	echo $line
+	echo "" 
+	echo $message
+	echo "" 
+}
+
+#Stop script when any of the command fails:
+set -e
+
+reportStep "Installing software needed for programming Arduino with makefiles:"
+sudo apt-get update
+sudo apt-get install arduino cutecom
+
+export GIT_REPO_DIR=$HOME/git
+reportStep "Checking if directory exists: " $GIT_REPO_DIR
+
+if ! test -d "$GIT_REPO_DIR"
+then
+	reportStep "Creating directory: " $GIT_REPO_DIR 
+	mkdir $GIT_REPO_DIR
+else 
+	reportStep "Directory already present."
+fi
+
+cd $GIT_REPO_DIR
+
+export GIT_CODE_URL="https://github.com/sudar/Arduino-Makefile.git" 
+reportStep "Retrieving source code for Arduino-Makefile:" $GIT_CODE_URL
+git clone $GIT_CODE_URL
+
+export GIT_CODE_URL="https://github.com/b3nzchr3ur/arduino-rp6-library.git"
+reportStep "Retrieving source code for Arduino-RP6-Librarry:" $GIT_CODE_URL
+git clone $GIT_CODE_URL
+
+cd $HOME
+
+export ARDUINO_LIB_PATH=$HOME/sketchbook/libraries
+
+if test -d "$ARDUINO_LIB_PATH"
+then
+	reportStep "Creating ink to Rp6 library in Arduino library directory: " $ARDUINO_LIB_PATH
+	ln -s $GIT_REPO_DIR/arduino-rp6-library $ARDUINO_LIB_PATH/Rp6
+else 
+	reportStep "Failure, could not find directory: " $ARDUINO_LIB_PATH
+fi
+
+cd $HOME
+
+reportStep "Installation done... enjoy!" 
